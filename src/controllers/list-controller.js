@@ -24,9 +24,11 @@ export const listController = {
     handler: async function (request, h) {
       const list = await db.listStore.getListById(request.params.id);
       const newAttraction = {
-        title: request.payload.title,
-        artist: request.payload.artist,
-        duration: Number(request.payload.duration),
+        name: request.payload.name,
+        category: request.payload.category,
+        description: request.payload.description,
+        latitude: Number(request.payload.latitude),
+        longitude: Number(request.payload.longitude),
       };
       await db.attractionStore.addAttraction(list._id, newAttraction);
       return h.redirect(`/list/${list._id}`);

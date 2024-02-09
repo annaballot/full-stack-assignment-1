@@ -15,10 +15,10 @@ export const listMemStore = {
   },
 
   async getListById(id) {
-    const list = lists.find((list) => list._id === id);
-    if (list) {
-      list.attractions = await attractionMemStore.getAttractionsByListId(list._id);
-      return list;
+    const currentList = lists.find((list) => list._id === id);
+    if (currentList) {
+      currentList.attractions = await attractionMemStore.getAttractionsByListId(currentList._id);
+      return currentList;
     }
     return null;
   },
