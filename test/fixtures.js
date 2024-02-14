@@ -26,18 +26,59 @@ export const testUsers = [
   }
 ];
 
-export const mozart = {
-  title: "Mozart Favourites"
+export const anna = {
+  title: "Annas Favourite Places"
+};
+
+export const fiona = {
+  title: "Fionas Favourite Places"
 };
 
 export const testLists = [
   {
-    title: "Beethoven Sonatas"
+    title: "Best Surf Spots"
   },
   {
-    title: "Beethoven Concertos"
+    title: "Coastal Winter Walks"
   },
   {
-    title: "Beethoven Symphonies"
+    title: "Fionas Fave Places"
   }
 ];
+
+export const clonea = {
+  "name": "Clonea Beach",
+  "category": "Beach",
+  "description": "2km stretch of beach along the copper coast",
+  "latitude": 5.8,
+  "longitude": 11.1
+};
+
+
+export const testAttractions = [
+  {
+    "name": "Kilmurrin Beach",
+    "category": "Beach",
+    "description": "Another lovely beach",
+    "latitude": 3,
+    "longitude": 1.1
+  },
+
+  {
+    "name": "Tramore",
+    "category": "Surf Spot",
+    "description": "great surfing spot",
+    "latitude": 55.2,
+    "longitude": 19.1
+  },
+
+  {
+    "name": "The Guilemene",
+    "category": "Diving",
+    "description": "has a diving board, can only use at high tide",
+    "latitude": 43.78,
+    "longitude": 49.1
+  },
+
+];
+

@@ -48,6 +48,13 @@
       "email": "annaballot@gmail.com",
       "password": "test",
       "_id": "4476c71b-2d3e-4dc0-802e-e46e193552e3"
+    },
+    {
+      "firstName": "Anna",
+      "lastName": "Ballot",
+      "email": "annaballot@gmail.com",
+      "password": "test",
+      "_id": "30f1f0d8-d102-4dbf-8f7f-bb487eecdfe5"
     }
   ],
   "lists": [
@@ -134,13 +141,17 @@
     },
     {
       "duration": null,
-      "_id": "3cc5db72-a70f-4ba0-9d90-1abcbdf51d11",
-      "listid": "e3bd1327-c1ba-408e-8156-a85241e8bf74"
-    },
-    {
-      "duration": null,
       "_id": "f0bdf6b3-8fa4-4f9f-81e5-1429be0efdea",
       "listid": "f7f3c012-d475-415e-bd16-82421cd59486"
+    },
+    {
+      "name": "Clonea2",
+      "category": "xdfsd",
+      "description": "dsfsd",
+      "latitude": 44,
+      "longitude": 4,
+      "_id": "763673fa-2847-479e-ae32-eb283ead541f",
+      "listid": "e3bd1327-c1ba-408e-8156-a85241e8bf74"
     }
   ]
 }

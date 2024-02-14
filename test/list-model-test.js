@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
 import { assert } from "chai";
 import { db } from "../src/models/db.js";
-import { testLists, mozart } from "./fixtures.js";
+import { testLists, anna } from "./fixtures.js";
 import { assertSubset } from "./test-utils.js";
 
 EventEmitter.setMaxListeners(25);
@@ -17,8 +17,8 @@ suite("List Model tests", () => {
   });
 
   test("create a list", async () => {
-    const list = await db.listStore.addList(mozart);
-    assertSubset(mozart, list);
+    const list = await db.listStore.addList(anna);
+    assertSubset(anna, list);
     assert.isDefined(list._id);
   });
 
@@ -31,9 +31,9 @@ suite("List Model tests", () => {
   });
 
   test("get a list - success", async () => {
-    const list = await db.listStore.addList(mozart);
+    const list = await db.listStore.addList(anna);
     const returnedList = await db.listStore.getListById(list._id);
-    assertSubset(mozart, list);
+    assertSubset(anna, list);
   });
 
   test("delete One List - success", async () => {
