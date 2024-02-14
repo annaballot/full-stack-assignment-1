@@ -55,6 +55,13 @@
       "email": "annaballot@gmail.com",
       "password": "test",
       "_id": "30f1f0d8-d102-4dbf-8f7f-bb487eecdfe5"
+    },
+    {
+      "firstName": "Anna",
+      "lastName": "Ballot",
+      "email": "annaballot@gmail.com",
+      "password": "test",
+      "_id": "50669d42-c830-4e00-a4f1-430fc7ddfc26"
     }
   ],
   "lists": [
@@ -94,6 +101,11 @@
       "userid": "4de6f0a1-51b3-4827-b1d3-c054514fed2d",
       "title": "dfsdf",
       "_id": "e3bd1327-c1ba-408e-8156-a85241e8bf74"
+    },
+    {
+      "userid": "4de6f0a1-51b3-4827-b1d3-c054514fed2d",
+      "title": "dsfsd",
+      "_id": "4f84d1af-4ddd-4d5e-ba79-a4aa861e8fcd"
     }
   ],
   "attractions": [
@@ -152,6 +164,15 @@
       "longitude": 4,
       "_id": "763673fa-2847-479e-ae32-eb283ead541f",
       "listid": "e3bd1327-c1ba-408e-8156-a85241e8bf74"
+    },
+    {
+      "name": "dsfs",
+      "category": "dsfs",
+      "description": "sdf",
+      "latitude": 0,
+      "longitude": 0,
+      "_id": "adba4ab4-179f-465e-b3b6-055a00ad5fdc",
+      "listid": "4f84d1af-4ddd-4d5e-ba79-a4aa861e8fcd"
     }
   ]
 }
