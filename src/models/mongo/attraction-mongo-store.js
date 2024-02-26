@@ -17,6 +17,8 @@ export const attractionMongoStore = {
 
   async addAttraction(listId, attraction) {
     attraction.listid = listId;
+    const newCategory = new Category(category);
+    const attractionObj = await newAttraction.save();
     const newAttraction = new Attraction(attraction);
     const attractionObj = await newAttraction.save();
     return this.getAttractionById(attractionObj._id);
@@ -37,6 +39,11 @@ export const attractionMongoStore = {
       console.log("bad id");
     }
   },
+
+
+  //Maybe add one for adding a category (array) 
+  // doc.tags.push('web development');
+  // https://masteringjs.io/tutorials/mongoose/array
 
 
 };

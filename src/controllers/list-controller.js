@@ -23,14 +23,19 @@ export const listController = {
     },
     handler: async function (request, h) {
       const list = await db.listStore.getListById(request.params.id);
+      const newCategory = {
+        category: request.payload.category,
+      };
       const newAttraction = {
         name: request.payload.name,
-        category: request.payload.category,
+        // category: request.payload.category,
         description: request.payload.description,
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
       };
-      await db.attractionStore.addAttraction(list._id, newAttraction);
+      await db.attractionStore.addAttraction(newCategory);
+      const list = await db.listStore.getListById(request.params.id);
+      await db.attractionStore.addAttraction(list._id, newAttraction, newCategory);
       return h.redirect(`/list/${list._id}`);
     },
   },
