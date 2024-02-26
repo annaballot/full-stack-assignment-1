@@ -9,6 +9,7 @@ import Handlebars from "handlebars";
 import { webRoutes } from "./web-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+import Inert from "@hapi/inert";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,6 +27,7 @@ async function init() {
 
   await server.register(Vision);
   await server.register(Cookie);
+  await server.register(Inert);
   server.validator(Joi);
 
   server.views({
