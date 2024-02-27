@@ -1,6 +1,6 @@
 import { v4 } from "uuid";
 import { db } from "./store-utils.js";
-import { attractionJsonStore } from "./attraction-json-store.js";
+import { placemarkJsonStore } from "./placemark-json-store.js";
 
 export const listJsonStore = {
   async getAllLists() {
@@ -20,7 +20,7 @@ export const listJsonStore = {
     await db.read();
     let currentList = db.data.lists.find((list) => list._id === id);
     if (currentList) {
-      currentList.attractions = await attractionJsonStore.getAttractionsByListId(currentList._id);
+      currentList.placemarks = await placemarkJsonStore.getPlacemarksByListId(currentList._id);
     } else {
       currentList = null;
     }

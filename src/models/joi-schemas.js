@@ -12,7 +12,7 @@ export const UserSpec = {
   password: Joi.string().required(),
 };
 
-export const AttractionSpec = {
+export const PlacemarkSpec = {
   name: Joi.string().required(),
   category: Joi.string().required(),
   description: Joi.string().allow("").optional(),

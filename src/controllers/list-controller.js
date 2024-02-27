@@ -1,4 +1,4 @@
-import { AttractionSpec } from "../models/joi-schemas.js";
+import { PlacemarkSpec } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
 
 export const listController = {
@@ -13,32 +13,32 @@ export const listController = {
     },
   },
 
-  addAttraction: {
+  addPlacemark: {
     validate: {
-      payload: AttractionSpec,
+      payload: PlacemarkSpec,
       options: { abortEarly: false },
       failAction: function (request, h, error) {
-        return h.view("list-view", { title: "Add attraction error", errors: error.details }).takeover().code(400);
+        return h.view("list-view", { title: "Add placemark error", errors: error.details }).takeover().code(400);
       },
     },
     handler: async function (request, h) {
       const list = await db.listStore.getListById(request.params.id);
-      const newAttraction = {
+      const newPlacemark = {
         name: request.payload.name,
         category: request.payload.category,
         description: request.payload.description,
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
       };
-      await db.attractionStore.addAttraction(list._id, newAttraction);
+      await db.placemarkStore.addPlacemark(list._id, newPlacemark);
       return h.redirect(`/list/${list._id}`);
     },
   },
 
-  deleteAttraction: {
+  deletePlacemark: {
     handler: async function (request, h) {
       const list = await db.listStore.getListById(request.params.id);
-      await db.attractionStore.deleteAttraction(request.params.attractionid);
+      await db.placemarkStore.deletePlacemark(request.params.placemarkid);
       return h.redirect(`/list/${list._id}`);
     },
   },

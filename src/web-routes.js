@@ -18,8 +18,8 @@ export const webRoutes = [
   { method: "GET", path: "/dashboard/deletelist/{id}", config: dashboardController.deleteList },
 
   { method: "GET", path: "/list/{id}", config: listController.index },
-  { method: "POST", path: "/list/{id}/addattraction", config: listController.addAttraction },
-  { method: "GET", path: "/list/{id}/deleteattraction/{attractionid}", config: listController.deleteAttraction },
+  { method: "POST", path: "/list/{id}/addplacemark", config: listController.addPlacemark },
+  { method: "GET", path: "/list/{id}/deleteplacemark/{placemarkid}", config: listController.deletePlacemark },
 
   { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
 ];

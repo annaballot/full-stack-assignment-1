@@ -55,7 +55,7 @@ export const clonea = {
 };
 
 
-export const testAttractions = [
+export const testPlacemarks = [
   {
     "name": "Kilmurrin Beach",
     "category": "Beach",

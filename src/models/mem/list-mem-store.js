@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import { attractionMemStore } from "./attraction-mem-store.js";
+import { placemarkMemStore } from "./placemark-mem-store.js";
 
 let lists = [];
 
@@ -17,7 +17,7 @@ export const listMemStore = {
   async getListById(id) {
     const currentList = lists.find((list) => list._id === id);
     if (currentList) {
-      currentList.attractions = await attractionMemStore.getAttractionsByListId(currentList._id);
+      currentList.placemarks = await placemarkMemStore.getPlacemarksByListId(currentList._id);
       return currentList;
     }
     return null;

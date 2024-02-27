@@ -1,5 +1,5 @@
 import { List } from "./list.js";
-import { attractionMongoStore } from "./attraction-mongo-store.js";
+import { placemarkMongoStore } from "./placemark-mongo-store.js";
 
 export const listMongoStore = {
   async getAllLists() {
@@ -11,7 +11,7 @@ export const listMongoStore = {
     if (id) {
       const list = await List.findOne({ _id: id }).lean();
       if (list) {
-        list.attractions = await attractionMongoStore.getAttractionsByListId(list._id);
+        list.placemarks = await placemarkMongoStore.getPlacemarksByListId(list._id);
       }
       return list;
     }
