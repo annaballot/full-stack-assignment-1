@@ -1,6 +1,10 @@
-<form class="box" action="/list/{{list._id}}/addattraction" method="POST">
-  <label>Enter Attraction Details:</label>
+<form class="box box-link-hover-shadow has-background-info" action="/list/{{list._id}}/addattraction" method="POST">
+<div class="has-text-white is-size-4 has-text-weight-bold">
+  <label>Enter Attraction Details:<br></label>
+  </div>
+    <br>
   <div class="field is-horizontal">
+
     <div class="field-body">
       <div class="field">
         <input class="input" type="text" placeholder="Enter Name" name="name">
@@ -28,5 +32,5 @@
       </div>
     </div>
   </div>
-  <button class="button is-primary">Add Attraction</button>
+  <button class="button is-info is-light has-text-info-dark has-text-weight-bold">Add Attraction</button>
 </form>
