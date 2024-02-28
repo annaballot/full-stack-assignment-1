@@ -38,7 +38,7 @@ suite("Placemark Model tests", () => {
     assert.equal(0, newPlacemarks.length);
   });
 
-  test("get a track - success", async () => {
+  test("get a placemark - success", async () => {
     const annaList = await db.listStore.addList(anna);
     const placemark = await db.placemarkStore.addPlacemark(annaList._id, clonea)
     const newPlacemark = await db.placemarkStore.getPlacemarkById(placemark._id);
@@ -58,7 +58,7 @@ suite("Placemark Model tests", () => {
     assert.isNull(await db.placemarkStore.getPlacemarkById());
   });
 
-  test("delete one track - fail", async () => {
+  test("delete one placemark - fail", async () => {
     await db.placemarkStore.deletePlacemark("bad-id");
     const placemarks = await db.placemarkStore.getAllPlacemarks();
     assert.equal(placemarks.length, testLists.length);
