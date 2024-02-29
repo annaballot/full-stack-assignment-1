@@ -4,10 +4,21 @@ import { db } from "../models/db.js";
 
 export const adminController = {
   
+  // adminUserView: {
+  //   auth: false,
+  //   handler: function (request, h) {
+  //     return h.view("admin-view-users", { title: "Login to CoastalLegend" });
+  //   },
+  // },
   adminUserView: {
     auth: false,
-    handler: function (request, h) {
-      return h.view("admin-view-users", { title: "Login to CoastalLegend" });
+    handler: async function (request, h) {
+      const users = await db.userStore.getAllUsers();
+      const viewData = {
+        title: "All the users",
+        users: users
+      };
+      return h.view("admin-view-users", viewData);
     },
   },
   showLogin: {
