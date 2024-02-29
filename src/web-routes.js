@@ -2,6 +2,7 @@ import { aboutController } from "./controllers/about-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { listController } from "./controllers/list-controller.js";
+import { adminController } from "./controllers/admin-controller.js";
 
 export const webRoutes = [
   { method: "GET", path: "/", config: accountsController.index },
@@ -10,6 +11,11 @@ export const webRoutes = [
   { method: "GET", path: "/logout", config: accountsController.logout },
   { method: "POST", path: "/register", config: accountsController.signup },
   { method: "POST", path: "/authenticate", config: accountsController.login },
+
+  { method: "GET", path: "/admin/login", config: adminController.showLogin },
+  { method: "POST", path: "/admin/authenticate", config: adminController.login },
+  { method: "GET", path: "/admin/logout", config: adminController.logout },
+  { method: "GET", path: "/admin/users", config: adminController.adminUserView },  
 
   { method: "GET", path: "/about", config: aboutController.index },
 

@@ -8,6 +8,7 @@ import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { listMongoStore } from "./mongo/list-mongo-store.js";
 import { placemarkMongoStore } from "./mongo/placemark-mongo-store.js";
 import { connectMongo } from "./mongo/connect.js";
+import { adminMongoStore } from "./mongo/admin-mongo-store.js";
 
 export const db = {
   userStore: null,
@@ -25,6 +26,7 @@ export const db = {
         this.userStore = userMongoStore;
         this.listStore = listMongoStore;
         this.placemarkStore = placemarkMongoStore;
+        this.adminStore = adminMongoStore;
         connectMongo();
         break;
       default :
