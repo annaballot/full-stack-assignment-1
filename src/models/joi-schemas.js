@@ -23,3 +23,8 @@ export const PlacemarkSpec = {
 export const ListSpec = {
   title: Joi.string().required(),
 };
+
+export const AdminCredentialsSpec = {
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+};
