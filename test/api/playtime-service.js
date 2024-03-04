@@ -49,29 +49,4 @@ export const playtimeService = {
     const res = await axios.get(`${this.playtimeUrl}/api/lists/${id}`);
     return res.data;
   },
-
-  async getAllPlacemarks() {
-    const res = await axios.get(`${this.playtimeUrl}/api/placemarks`);
-    return res.data;
-  },
-
-  async createPlacemark(id, placemark) {
-    const res = await axios.post(`${this.playtimeUrl}/api/lists/${id}/placemarks`, placemark);
-    return res.data;
-  },
-
-  async deleteAllPlacemarks() {
-    const res = await axios.delete(`${this.playtimeUrl}/api/placemarks`);
-    return res.data;
-  },
-
-  async getPlacemark(id) {
-    const res = await axios.get(`${this.playtimeUrl}/api/placemarks/${id}`);
-    return res.data;
-  },
-
-  async deletePlacemark(id) {
-    const res = await axios.delete(`${this.playtimeUrl}/api/placemarks/${id}`);
-    return res.data;
-  },
 };
