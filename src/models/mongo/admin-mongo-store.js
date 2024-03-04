@@ -15,12 +15,15 @@ export const adminMongoStore = {
     return admin;
   },
 
-  //ab update - and figure out how to add an admin
   async addAdmin(admin) {
     const newAdmin = new Admin(admin);
     const adminObj = await newAdmin.save();
     const u = await this.getAdminById(adminObj._id);
     return u;
   },
+
+  async deleteAllAdmins() {
+    await Admin.deleteMany({});
+  }
 
 };

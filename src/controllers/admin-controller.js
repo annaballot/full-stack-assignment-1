@@ -4,10 +4,21 @@ import { db } from "../models/db.js";
 
 export const adminController = {
   
+  // adminUserView: {
+  //   auth: false,
+  //   handler: function (request, h) {
+  //     return h.view("admin-view-users", { title: "Login to CoastalLegend" });
+  //   },
+  // },
   adminUserView: {
     auth: false,
-    handler: function (request, h) {
-      return h.view("admin-view-users", { title: "Login to CoastalLegend" });
+    handler: async function (request, h) {
+      const users = await db.userStore.getAllUsers();
+      const viewData = {
+        title: "Admin: View Users",
+        users: users
+      };
+      return h.view("admin-view-users", viewData);
     },
   },
   showLogin: {
@@ -26,6 +37,7 @@ export const adminController = {
       },
     },
     handler: async function (request, h) {
+      await db.adminStore.deleteAllAdmins(); //delete all admins first so there's not duplicates
       await db.adminStore.addAdmin(adminUser);
       const { email, password } = request.payload;
       const admin = await db.adminStore.getAdminByEmail(email);
@@ -33,8 +45,7 @@ export const adminController = {
         return h.redirect("/login");
       }
       request.cookieAuth.set({ id: admin._id });
-      // return h.redirect("/admin/users"); //AB update
-      return h.redirect("/admin/users"); //AB update
+      return h.redirect("/admin/users"); 
     },
   },
   logout: {

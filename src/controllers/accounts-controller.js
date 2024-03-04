@@ -35,6 +35,14 @@ export const accountsController = {
       return h.view("login-view", { title: "Login to CoastalLegend" });
     },
   },
+  deleteUser: {
+    auth: false,
+    handler: async function (request, h) {
+      const user = await db.userStore.getUserById(request.params.id);
+      await db.userStore.deleteUserById(request.params.id);
+      return h.redirect("/admin/users");
+    },
+  },
   login: {
     auth: false,
     validate: {
