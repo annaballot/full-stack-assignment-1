@@ -33,7 +33,7 @@ export const placemarkApi = {
     auth: false,
     handler: async function (request, h) {
       try {
-        const placemark = await db.placemarkStore.addPlacemark(request.params.id, request.payload);
+        const placemark = await db.placemarkStore.addPlacemark(request.params.id, request.params.userID, request.payload);
         if (placemark) {
           return h.response(placemark).code(201);
         }

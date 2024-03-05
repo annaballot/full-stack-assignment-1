@@ -12,6 +12,10 @@ const placemarkSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "List",
   },
+  userid: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 export const Placemark = Mongoose.model("Placemark", placemarkSchema);

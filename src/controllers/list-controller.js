@@ -22,6 +22,7 @@ export const listController = {
       },
     },
     handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
       const list = await db.listStore.getListById(request.params.id);
       const newPlacemark = {
         name: request.payload.name,
@@ -30,7 +31,7 @@ export const listController = {
         latitude: Number(request.payload.latitude),
         longitude: Number(request.payload.longitude),
       };
-      await db.placemarkStore.addPlacemark(list._id, newPlacemark);
+      await db.placemarkStore.addPlacemark(list._id, loggedInUser._id, newPlacemark);
       return h.redirect(`/list/${list._id}`);
     },
   },

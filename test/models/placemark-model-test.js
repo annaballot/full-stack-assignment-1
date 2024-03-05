@@ -1,6 +1,6 @@
 import { assert } from "chai";
 import { db } from "../../src/models/db.js";
-import {  testLists, testPlacemarks, fiona, anna, clonea } from "../fixtures.js";
+import {  testLists, testPlacemarks, fiona, anna, clonea , maggie} from "../fixtures.js";
 import { assertSubset } from "../test-utils.js";
 
 suite("Placemark Model tests", () => {
@@ -11,16 +11,18 @@ suite("Placemark Model tests", () => {
     db.init("mongo");
     await db.listStore.deleteAllLists();
     await db.placemarkStore.deleteAllPlacemarks();
+    const newUser = await db.userStore.addUser(maggie);
     fionaList = await db.listStore.addList(fiona);
     for (let i = 0; i < testPlacemarks.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      testPlacemarks[i] = await db.placemarkStore.addPlacemark(fionaList._id, testPlacemarks[i]);
+      testPlacemarks[i] = await db.placemarkStore.addPlacemark(fionaList._id, newUser._id, testPlacemarks[i]);
     }
   });
 
   test("create single placemark", async () => {
     const annaList = await db.listStore.addList(anna);
-    const placemark = await db.placemarkStore.addPlacemark(annaList._id, clonea)
+    const newUser = await db.userStore.addUser(maggie);
+    const placemark = await db.placemarkStore.addPlacemark(annaList._id, newUser._id, clonea)
     assert.isNotNull(placemark._id);
     assertSubset (clonea, placemark);
   });
@@ -38,9 +40,10 @@ suite("Placemark Model tests", () => {
     assert.equal(0, newPlacemarks.length);
   });
 
-  test("get a track - success", async () => {
+  test("get a placemark - success", async () => {
     const annaList = await db.listStore.addList(anna);
-    const placemark = await db.placemarkStore.addPlacemark(annaList._id, clonea)
+    const newUser = await db.userStore.addUser(maggie);
+    const placemark = await db.placemarkStore.addPlacemark(annaList._id, maggie._id, clonea)
     const newPlacemark = await db.placemarkStore.getPlacemarkById(placemark._id);
     assertSubset (clonea, newPlacemark);
   });
@@ -58,7 +61,7 @@ suite("Placemark Model tests", () => {
     assert.isNull(await db.placemarkStore.getPlacemarkById());
   });
 
-  test("delete one track - fail", async () => {
+  test("delete one placemark - fail", async () => {
     await db.placemarkStore.deletePlacemark("bad-id");
     const placemarks = await db.placemarkStore.getAllPlacemarks();
     assert.equal(placemarks.length, testLists.length);

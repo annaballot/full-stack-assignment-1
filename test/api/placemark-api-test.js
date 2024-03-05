@@ -19,7 +19,7 @@ suite("Placemark API tests", () => {
   teardown(async () => {});
 
   test("create placemark", async () => {
-    const returnedPlacemark = await playtimeService.createPlacemark(beethovenSonatas._id, clonea);
+    const returnedPlacemark = await playtimeService.createPlacemark(beethovenSonatas._id, anna._id, clonea);
     assertSubset(clonea, returnedPlacemark);
   });
 

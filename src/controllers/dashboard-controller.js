@@ -5,6 +5,7 @@ export const dashboardController = {
   index: {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
+      
       const lists = await db.listStore.getUserLists(loggedInUser._id);
       const viewData = {
         title: "Playtime Dashboard",
@@ -12,6 +13,35 @@ export const dashboardController = {
         lists: lists,
       };
       return h.view("dashboard-view", viewData);
+    },
+  },
+
+  showAllPlacemarks: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      // const loggedInUserID = loggedInUser._id;
+      const placemarks = await db.placemarkStore.getUserPlacemarks(loggedInUser._id);
+      const viewData = {
+        title: "List",
+        placemarks: placemarks,
+        loggedInUser: loggedInUser,
+      };
+      return h.view("all-placemarks-view", viewData);
+    },
+  },
+
+  filterPlacemarks: {
+    handler: async function (request, h) {
+      const loggedInUser = request.auth.credentials;
+      // const loggedInUserID = loggedInUser._id;
+      const category = request.query.category;
+      const placemarks = await db.placemarkStore.getPlacemarksByCategory(loggedInUser._id, category);
+      const viewData = {
+        title: "List",
+        placemarks: placemarks,
+        loggedInUser: loggedInUser,
+      };
+      return h.view("all-placemarks-view", viewData);
     },
   },
 
@@ -41,4 +71,6 @@ export const dashboardController = {
       return h.redirect("/dashboard");
     },
   },
+
+
 };
