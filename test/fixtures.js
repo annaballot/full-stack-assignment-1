@@ -1,3 +1,8 @@
+export const testAdmin = {
+  email: "annaballot@gmail.com",
+  password: "test"
+};
+
 export const maggie = {
   firstName: "Maggie",
   lastName: "Simpson",
