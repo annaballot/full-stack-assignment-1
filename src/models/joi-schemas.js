@@ -44,9 +44,27 @@ export const PlacemarkSpecPlus = PlacemarkSpec.keys({
 
 export const PlacemarkArraySpec = Joi.array().items(PlacemarkSpecPlus).label("PlacemarkArray");
 
-export const ListSpec = {
-  title: Joi.string().required(),
-};
+
+
+
+
+export const ListSpec = Joi.object()
+  .keys({
+    title: Joi.string().required().example("Favourite Beaches"),
+    userid: IdSpec,
+    placemarks: PlacemarkArraySpec,
+  })
+  .label("List");
+
+export const ListSpecPlus = ListSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("ListPlus");
+
+export const ListArraySpec = Joi.array().items(ListSpecPlus).label("ListArray");
+
+
+
 
 export const AdminCredentialsSpec = {
   email: Joi.string().email().required(),

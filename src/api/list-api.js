@@ -1,6 +1,7 @@
 import Boom from "@hapi/boom";
-import { ListSpec } from "../models/joi-schemas.js";
+import { IdSpec, ListArraySpec, ListSpec, ListSpecPlus } from "../models/joi-schemas.js";
 import { db } from "../models/db.js";
+import { validationError } from "./logger.js";
 
 export const listApi = {
   find: {
@@ -13,6 +14,10 @@ export const listApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    response: { schema: ListArraySpec, failAction: validationError },
+    description: "Get all lists",
+    notes: "Returns all lists",
   },
 
   findOne: {
@@ -28,6 +33,11 @@ export const listApi = {
         return Boom.serverUnavailable("No List with this id");
       }
     },
+    tags: ["api"],
+    description: "Find a list",
+    notes: "Returns a list",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: ListSpecPlus, failAction: validationError },
   },
 
   create: {
@@ -44,6 +54,11 @@ export const listApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a List",
+    notes: "Returns the newly created list",
+    validate: { payload: ListSpec, failAction: validationError },
+    response: { schema: ListSpecPlus, failAction: validationError },
   },
 
   deleteOne: {
@@ -60,6 +75,9 @@ export const listApi = {
         return Boom.serverUnavailable("No List with this id");
       }
     },
+    tags: ["api"],
+    description: "Delete a list",
+    validate: { params: { id: IdSpec }, failAction: validationError },
   },
 
   deleteAll: {
@@ -72,5 +90,7 @@ export const listApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all ListApi",
   },
 };
