@@ -3,20 +3,13 @@ import { adminUser } from "../models/adminHardcode.js";
 import { db } from "../models/db.js";
 
 export const adminController = {
-  
-  // adminUserView: {
-  //   auth: false,
-  //   handler: function (request, h) {
-  //     return h.view("admin-view-users", { title: "Login to CoastalLegend" });
-  //   },
-  // },
   adminUserView: {
     auth: false,
     handler: async function (request, h) {
       const users = await db.userStore.getAllUsers();
       const viewData = {
         title: "Admin: View Users",
-        users: users
+        users: users,
       };
       return h.view("admin-view-users", viewData);
     },
@@ -45,7 +38,7 @@ export const adminController = {
         return h.redirect("/login");
       }
       request.cookieAuth.set({ id: admin._id });
-      return h.redirect("/admin/users"); 
+      return h.redirect("/admin/users");
     },
   },
   logout: {
@@ -62,8 +55,4 @@ export const adminController = {
     }
     return { isValid: true, credentials: admin };
   },
-
-
-
-
 };

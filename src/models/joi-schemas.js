@@ -29,7 +29,7 @@ export const PlacemarkSpec = Joi.object()
   .keys({
     name: Joi.string().required().example("Clonea"),
     category: Joi.string().required().example("Beach"),
-    description: Joi.string().allow("").optional().example("Lovely Beach in West Waterford"),
+    description: Joi.string().allow("").required().example("Lovely Beach in West Waterford"),
     latitude: Joi.number().allow("").optional().example(3.58),
     longitude: Joi.number().allow("").optional().example(8.24),
     userid: IdSpec,
@@ -64,9 +64,10 @@ export const ListSpecPlus = ListSpec.keys({
 export const ListArraySpec = Joi.array().items(ListSpecPlus).label("ListArray");
 
 
-
-
+//did not implement API for admin user
 export const AdminCredentialsSpec = {
   email: Joi.string().email().required(),
   password: Joi.string().required(),
 };
+
+

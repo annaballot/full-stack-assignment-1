@@ -74,4 +74,10 @@ export const playtimeService = {
     const res = await axios.delete(`${this.playtimeUrl}/api/placemarks/${id}`);
     return res.data;
   },
+
+
+
+
+
+  
 };
