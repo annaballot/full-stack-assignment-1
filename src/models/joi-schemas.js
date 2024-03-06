@@ -2,7 +2,6 @@ import Joi from "joi";
 
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
 
-
 export const UserCredentialsSpec = Joi.object()
   .keys({
     email: Joi.string().email().example("homer@simpson.com").required(),
@@ -22,13 +21,28 @@ export const UserSpecPlus = UserSpec.keys({
 
 export const UserArray = Joi.array().items(UserSpecPlus).label("UserArray");
 
-export const PlacemarkSpec = {
-  name: Joi.string().required(),
-  category: Joi.string().required(),
-  description: Joi.string().allow("").optional(),
-  latitude: Joi.number().allow("").optional(),
-  longitude: Joi.number().allow("").optional(),
-};
+
+
+
+
+export const PlacemarkSpec = Joi.object()
+  .keys({
+    name: Joi.string().required().example("Clonea"),
+    category: Joi.string().required().example("Beach"),
+    description: Joi.string().allow("").optional().example("Lovely Beach in West Waterford"),
+    latitude: Joi.number().allow("").optional().example(3.58),
+    longitude: Joi.number().allow("").optional().example(8.24),
+    userid: IdSpec,
+    listid: IdSpec,
+  })
+  .label("Placemark");
+
+export const PlacemarkSpecPlus = PlacemarkSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("PlacemarkPlus");
+
+export const PlacemarkArraySpec = Joi.array().items(PlacemarkSpecPlus).label("PlacemarkArray");
 
 export const ListSpec = {
   title: Joi.string().required(),
